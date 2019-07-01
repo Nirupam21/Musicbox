@@ -1,0 +1,117 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="icon" href="{% static 'images/img14.jpg' %}" class="image">
+    <title>Music Box</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+     img.bg {
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity:0.8;
+    z-index:-1;
+}
+
+@media screen and (max-width: 1024px){
+    img.bg {
+    left: 50%;
+    margin-left: -512px; }
+}
+
+
+.form{
+    text-align:center;
+ }
+
+ .navbar-inverse{
+     background-color:DarkSlateGrey;
+     color:RoyalBlue;
+ }
+
+.loginform{
+    width:350px;
+    height:320px;
+    margin:auto;
+    background-color:white;
+    text-align:center;
+    border-radius:100px;
+}
+
+</style>
+</head>
+<body>
+
+{% if user.is_authenticated %}
+<img src="{% static 'images/img1.jpg' %}" class="bg" />
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/welcome" style="color:white; font-family:'Comic Sans MS';"><img class="image" src="{% static 'images/img14.jpg' %}" height="30px" width="50px"></a>
+        <a href="#" class="navbar-brand" style="color:white; font-family:'Comic Sans MS';"><span class="glyphicon glyphicon-user"> {{ user }}</span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
+      <li><a href="/upload" style="color:white;font-family:'Comic Sans MS';">Upload</a></li>
+      <li><a href="/myuploads" style="color:white;font-family:'Comic Sans MS">My Uploads</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/logout" style="color:white; font-family:'Comic Sans MS';"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+    </ul>
+  </div>
+  </div>
+</nav>
+   <div class="container">
+             {% block content %}
+             {% endblock %}
+   </div>
+
+{% else %}
+      <img src="{% static 'images/img1.jpg' %}" class="bg" />
+    <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar1">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/welcome" style="color:white; font-family:'Comic Sans MS';"><img class="image" src="{% static 'images/img14.jpg' %}" height="30px" width="50px"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar1">
+
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="/signup" style="color:white; font-family:'Comic Sans MS';"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="/login" style="color:white; font-family:'Comic Sans MS';"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    </div>
+  </div>
+</nav>
+   <div class="container">
+             {% block login %}
+             {% endblock %}
+   </div>
+{% endif %}
+<div class="container">
+     {% block welcome %}
+     {% endblock %}
+</div>
+</body>
+</html>

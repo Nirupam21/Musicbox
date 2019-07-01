@@ -1,0 +1,83 @@
+{% load static %}
+<html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    {% for a in a %}
+    <title>{{ a.name }}</title>
+    {% endfor %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+     img.bg {
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity:0.9;
+    z-index:-1;
+}
+
+@media screen and (max-width: 1024px){
+    img.bg {
+    left: 50%;
+    margin-left: -512px; }
+}
+
+
+.form{
+    text-align:center;
+ }
+
+ .navbar-inverse{
+     background-color:DarkSlateGrey;
+     color:RoyalBlue;
+ }
+
+.loginform{
+    width:350px;
+    height:320px;
+    margin:auto;
+    background-color:white;
+    text-align:center;
+    border-radius:100px;
+}
+
+h3{
+   text-color:white;
+   font-family:"Comic Sans MS", cursive, sans-serif;
+}
+h5{
+   text-color:white;
+   font-family:"Comic Sans MS", cursive, sans-serif;
+}
+</style>
+</head>
+<body>
+<img src="{% static 'images/img1.jpg' %}" class="bg" />
+
+  <br/><br/><br/>  <br/><br/>
+
+  {% for a in a %}
+      <div class="container">
+           <img src="/media/{{ a.thumbnail }}" height="300px" width="300px"><br/>
+           <audio  controls>
+               <source src="/media/{{ a.file }}" type="audio/mp3">
+          </audio>
+      </div>
+    <br/>
+    <div class="container">
+    <h2 style="color:white; font-family:'Comic Sans MS', cursive, sans-serif;"><img src="/media/{{ a.thumbnail }}" height="50px" width="50px">  {{ a.name }}</h2><br/>
+    <h5 style="color:white; font-family:'Comic Sans MS', cursive, sans-serif;">Uploaded By : {{ a.file_uploader }} <br><br>{{ a.date }}</h5>
+    </div>
+   {% endfor %}
+  </body>
+</html>

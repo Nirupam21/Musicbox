@@ -1,0 +1,37 @@
+{% extends "home.html" %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+       .form{
+    text-align:center;
+ }
+ .uploadform{
+     background-color:white;
+     width:800px;
+     border-radius:50px;
+ }
+
+
+   </style>
+</head>
+<body>
+             <h3><code><b>Hi {{ user }}</b>, lets uploaded something:</code></h3>
+             <br/><br/>
+             <div class="uploadform">
+   						<form class="form" action="/upload/" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <br/><br/><br/>
+                            <h4>Name of the song or video</h4>    <input type="text" name="file_name"><br/><br/>
+                            <h4>Upload the file</h4>  <input type="file"  name="file" style="font-family:Tahoma;cursor:pointer;color:white;border-radius:5px;margin:auto;background: MediumSeaGreen;padding:10px; 3px #40E0D0;" id="file_name" /><br/><br/>
+                            <h4>Upload the thumbnail</h4>   <input type="file" name="thumb" style="font-family:Tahoma;cursor:pointer;color:white;border-radius:5px;margin:auto;background: MediumSeaGreen;padding:10px; 3px #40E0D0;">
+                            <input type="hidden" name="uname" value="{{ user }}" />
+                            <br />
+                            <input type="submit" name="submit" class="btn btn-primary btn-block" value="Upload" />
+                            <span style="color:MediumSeaGreen;">{{msg}}</span>
+                            <br/> <br/>
+                        </form>
+             </div>
+
+</body>
+{% endblock %}

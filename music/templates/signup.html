@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+{% load static %}
+{% block login %}
+<head>
+      <meta charset="UTF-8">
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+
+     .form{
+        text-align:center;
+       }
+       .navbar-inverse{
+     background-color:DarkSlateGrey;
+ }
+</style>
+</head>
+
+<body>
+   <br/><br/><br/>
+   <div class="loginform">
+       <br/>
+  <form method="POST" class="form">
+             <img src="{% static 'images/user2.png' %}" height="80px" width="80px">
+             {% csrf_token %}
+             {{ form.as_p }}
+             <button type="submit" class="btn btn-primary btn-lg">Register</button>
+  </form>
+
+   </div>
+</body>
+{% endblock %}

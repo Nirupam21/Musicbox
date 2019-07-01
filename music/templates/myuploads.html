@@ -1,0 +1,52 @@
+{% extends "home.html" %}
+{% block content %}
+<html>
+<head>
+  <style>
+  .container{
+     height:400px;
+     width:400px;
+  }
+
+
+  </style>
+</head>
+<body>
+<!--{% block media %}
+    {% for a in a %}
+      <div class="container">
+           <img src="/media/{{ a.thumbnail }}" height="300px" width="300px">
+           <audio  controls>
+           <source src="/media/{{ a.file }}" type="audio/mp3">
+          </audio>
+      </div>
+    {% endfor %}
+{% endblock %}-->
+<h3><code><b>Hi {{ user }}</b>, Your uploaded files are:</code></h3>
+{% if items %}
+		<div class="table-responsive" style="background:white; border-radius:10px;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>FileName</th>
+        <th>Play</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+	{% for item in items %}
+      <tr>
+        <td>{{ item.name }}</td>
+        <td><a href="/play/{{ item.pk }}" target="_blank"><button class="btn btn-primary"><i class="glyphicon glyphicon-play"></i> Play</button></a></td>
+        <td>{{ item.date }}
+      </tr>
+	  {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <blockquote style="margin:5px;padding:5px;font-family:Trebuchet Ms;"><mark>You have not uploaded anything yet !<br />First, upload some files :)</mark></blockquote>
+  {% endif %}
+</body>
+</html>
+{% endblock %}

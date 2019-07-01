@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+{% load static %}
+{% block login %}
+<head>
+
+</head>
+
+<body>
+   <br/><br/><br/>
+   <div class="loginform">
+       <br/>
+      <form action="/auth/" method="post" class="form">
+      <img src="{% static 'images/user2.png' %}" height="80px" width="80px"><br/><br/>
+      {% csrf_token %}
+      <input type="text" placeholder="Username" name="username"/><br/><br/>
+      <input type="password" placeholder="Password" name="password"><br/><br/>
+      <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+       <span style="color:red;"><b><h5>{{errMsg}}</h5></b></span>
+      <form action="/welcome/" method="post" class="form">
+           {% csrf_token %}
+           <button type="submit" class="btn btn-success">Take me to the world of music and video</button>
+      </form>
+      <br/><br/>
+   </div>
+</body>
+{% endblock %}
